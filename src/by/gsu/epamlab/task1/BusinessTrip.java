@@ -55,15 +55,8 @@ public class BusinessTrip {
 
     public static String pennyToRuble(int pennyToConvert) {
         String s = String.valueOf(pennyToConvert);
-        String result;
-        if (s.length() > 2){
-            result = s.substring(0, s.length() - 2) + "." + s.substring(s.length() - 2);
-        } else if (s.length() > 1) {
-            result = "0." + s;
-        } else {
-            result = "0.0" + s;
-        }
-        return result;
+        return s.length() > 2 ? s.substring(0, s.length() - 2) + "." + s.substring(s.length() - 2) :
+                s.length() > 1 ? "0." + s : "0.0" + s;
     }
 
     @Override

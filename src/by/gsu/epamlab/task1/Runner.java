@@ -19,8 +19,7 @@ public class Runner {
 
         businessTripsArray[businessTripsArray.length - 1].setExpenses(300);
 
-        System.out.printf("Duration: %d%n", businessTripsArray[0].getDaysNumber() +
-                businessTripsArray[1].getDaysNumber());
+        System.out.printf("Duration: %d%n", businessTripsArray[0].getDaysNumber() + businessTripsArray[1].getDaysNumber());
 
         for (BusinessTrip businessTrip : businessTripsArray) {
             if (businessTrip != null) {
