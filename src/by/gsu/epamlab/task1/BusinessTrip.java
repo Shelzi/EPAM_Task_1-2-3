@@ -1,7 +1,6 @@
 package by.gsu.epamlab.task1;
 
 public class BusinessTrip {
-
     public static final int DAILY_RATE = 3;
     private String account;
     private int expenses;
