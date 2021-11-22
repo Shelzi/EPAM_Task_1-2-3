@@ -1,7 +1,8 @@
 package by.gsu.epamlab.task1;
 
 public class BusinessTrip {
-    public static final int DAILY_RATE = 12;
+
+    public static final int DAILY_RATE = 3;
     private String account;
     private int expenses;
     private int daysNumber;
@@ -54,16 +55,11 @@ public class BusinessTrip {
     }
 
     public static String pennyToRuble(int pennyToConvert) {
-        String s = String.valueOf(pennyToConvert);
-        return s.length() > 2 ? s.substring(0, s.length() - 2) + "." + s.substring(s.length() - 2) :
-                s.length() > 1 ? "0." + s : "0.0" + s;
+        return String.format("%d.%02d", pennyToConvert / 100, pennyToConvert % 100);
     }
 
     @Override
     public String toString() {
-        return account + ';' +
-                pennyToRuble(expenses) + ';' +
-                daysNumber + ';' +
-                pennyToRuble(this.getTotal());
+        return String.format("%s;%s;%d;%s", account, pennyToRuble(expenses), daysNumber, pennyToRuble(this.getTotal()));
     }
 }
