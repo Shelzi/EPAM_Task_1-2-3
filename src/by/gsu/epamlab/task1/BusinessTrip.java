@@ -8,7 +8,6 @@ public class BusinessTrip {
     private int daysNumber;
 
     public BusinessTrip() {
-
     }
 
     public BusinessTrip(String accountId, int transportExpenses, int numberOfDays) {
@@ -60,6 +59,6 @@ public class BusinessTrip {
 
     @Override
     public String toString() {
-        return String.format("%s;%s;%d;%s", account, pennyToRuble(expenses), daysNumber, pennyToRuble(this.getTotal()));
+        return String.format("%s;%s;%d;%s", account, pennyToRuble(expenses), daysNumber, pennyToRuble(getTotal()));
     }
 }
