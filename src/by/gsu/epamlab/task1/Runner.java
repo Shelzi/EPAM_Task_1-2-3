@@ -22,7 +22,7 @@ public class Runner {
                 }
             }
         }
-        System.out.println("This is trip with max cost:");
+        System.out.print("This is trip with max cost:");
         tripWithMaxCost.show();
 
         businessTripsArray[businessTripsArray.length - 1].setExpenses(300);
