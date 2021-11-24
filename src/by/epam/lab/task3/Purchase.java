@@ -3,8 +3,8 @@ package by.epam.lab.task3;
 import org.jetbrains.annotations.NotNull;
 
 public class Purchase implements Comparable<Purchase> {
-    private String name;
-    private int price;
+    private final String name = "Beer";
+    private final int price = 500;
     private int number;
     private int percent;
     private WeekDay weekDay;
@@ -12,9 +12,7 @@ public class Purchase implements Comparable<Purchase> {
     public Purchase() {
     }
 
-    public Purchase(String name, int price, int number, int discount, WeekDay weekDay) {
-        this.name = name;
-        this.price = price;
+    public Purchase(int number, int discount, WeekDay weekDay) {
         this.number = number;
         this.percent = discount;
         this.weekDay = weekDay;
@@ -24,16 +22,8 @@ public class Purchase implements Comparable<Purchase> {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getPrice() {
         return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public int getNumber() {
@@ -64,12 +54,11 @@ public class Purchase implements Comparable<Purchase> {
         this.weekDay = weekDay;
     }
 
+    //public void setWeekDayByOrder(int)
+
     @Override
     public String toString() {
-        return name + ';' +
-                price + ';' +
-                number + ';' +
-                percent;
+        return String.format("%s;%d;%d;%d", name, price, number, percent);
     }
 
     @Override
