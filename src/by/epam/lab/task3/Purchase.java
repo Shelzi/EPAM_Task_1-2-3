@@ -54,8 +54,6 @@ public class Purchase implements Comparable<Purchase> {
         this.weekDay = weekDay;
     }
 
-    //public void setWeekDayByOrder(int)
-
     @Override
     public String toString() {
         return String.format("%s;%d;%d;%d", name, price, number, percent);
