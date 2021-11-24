@@ -2,21 +2,22 @@ package by.epam.lab.task3;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Purchase implements Comparable<Purchase>{
+public class Purchase implements Comparable<Purchase> {
     private String name;
     private int price;
     private int number;
     private int percent;
+    private WeekDay weekDay;
 
     public Purchase() {
-
     }
 
-    public Purchase(String name, int price, int number, int discount) {
+    public Purchase(String name, int price, int number, int discount, WeekDay weekDay) {
         this.name = name;
         this.price = price;
         this.number = number;
         this.percent = discount;
+        this.weekDay = weekDay;
     }
 
     public String getName() {
@@ -52,7 +53,15 @@ public class Purchase implements Comparable<Purchase>{
     }
 
     public int getCost() {
-       return price * number * (100 - percent)/100;
+        return price * number * (100 - percent) / 100;
+    }
+
+    public WeekDay getWeekDay() {
+        return weekDay;
+    }
+
+    public void setWeekDay(WeekDay weekDay) {
+        this.weekDay = weekDay;
     }
 
     @Override
@@ -64,7 +73,7 @@ public class Purchase implements Comparable<Purchase>{
     }
 
     @Override
-    public int compareTo(@NotNull Purchase o) {
-        return 0;
+    public int compareTo(@NotNull Purchase purchase) {
+        return number - purchase.number;
     }
 }
