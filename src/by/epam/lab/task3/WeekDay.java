@@ -11,6 +11,7 @@ public enum WeekDay {
     SATURDAY,
     SUNDAY;
 
+    @Override
     public String toString() {
         return this.name().toLowerCase();
     }

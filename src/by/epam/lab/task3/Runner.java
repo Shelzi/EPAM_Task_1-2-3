@@ -11,30 +11,69 @@ public class Runner {
     private static final int THIRD_SCAN_VALUE = 2;
 
     public static void main(String[] args) {
-        Purchase[] PURCHASES_NUMBER = new Purchase[]{};
+        Purchase[] purchases = parsePurchaseFromTxt();
+        //purchases = new Purchase[0];
+        for (Purchase a : purchases) {
+            System.out.println(a);
+        }
+        calculatePurchasesStatistic(purchases);
+    }
+
+    private static Purchase[] parsePurchaseFromTxt() {
+        Purchase[] purchases = new Purchase[]{};
         String filepath = "src\\in.txt";
         try (Scanner scan = new Scanner(new FileReader(filepath))) {
             scan.useLocale(Locale.ENGLISH);
             if (scan.hasNext() && scan.hasNextInt()) {
-                PURCHASES_NUMBER = new Purchase[scan.nextInt()];
+                purchases = new Purchase[scan.nextInt()];
                 scan.useDelimiter("\r\n");
-                if (PURCHASES_NUMBER.length != 0) {
-                    for (int i = 0; i < PURCHASES_NUMBER.length; i++) {
+                if (purchases.length != 0) {
+                    for (int i = 0; i < purchases.length; i++) {
                         String[] line = scan.next().split(" ");
-                        PURCHASES_NUMBER[i] = new Purchase(Integer.parseInt(line[FIRST_SCAN_VALUE]),
-                                Integer.parseInt(line[SECOND_SCAN_VALUE]),
+                        purchases[i] = new Purchase(Integer.parseInt(line[FIRST_SCAN_VALUE]),
+                                Double.parseDouble(line[SECOND_SCAN_VALUE]),
                                 WeekDay.values()[Integer.parseInt(line[THIRD_SCAN_VALUE])]);
                     }
                 } else {
                     System.out.println("PURCHASES NUMBER is 0");
                 }
             }
-            for (Purchase a : PURCHASES_NUMBER) {
-                System.out.println(a);
-            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        return purchases;
+    }
+
+    private static void calculatePurchasesStatistic(Purchase[] purchases) {
+        System.out.printf("Name = %s%nPrice = %d%n", Purchase.NAME, Purchase.PRICE);
+        int totalCost = 0;
+        double totalCostMonday = 0.0;
+        double maxCost = 0.0;
+        WeekDay weekDayMaxCost = null;
+        if (purchases.length != 0) {
+            for (Purchase purchase : purchases) {
+                purchase.showOrder();
+            }
+            for (Purchase purchase : purchases) {
+                double tempCost = purchase.findCost();
+                if (tempCost > maxCost) {
+                    maxCost = tempCost;
+                    weekDayMaxCost = purchase.getWeekDay();
+                }
+                if (purchase.getWeekDay() == WeekDay.MONDAY) {
+                    totalCostMonday += tempCost;
+                }
+                totalCost += tempCost;
+            }
+        }
+        double meanCost = purchases.length != 0 ? (double) totalCost / purchases.length : 0.0;
+        System.out.printf("Mean cost = %.3f%n" +
+                        "Total cost on Mondays= %.3f%n" +
+                        "Day with max cost = %s%n" +
+                        "Max cost = %.3f%n",
+                meanCost,
+                totalCostMonday,
+                weekDayMaxCost,
+                maxCost);
     }
 }
-
