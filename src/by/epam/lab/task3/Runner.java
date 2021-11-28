@@ -7,11 +7,6 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Runner {
-    private static final int FIRST_SCAN_VALUE = 0;
-    private static final int SECOND_SCAN_VALUE = 1;
-    private static final int THIRD_SCAN_VALUE = 2;
-    private static final int SEARCH_NUMBER_VALUE = 5;
-
     public static void main(String[] args) {
         Purchase[] purchases = parsePurchaseFromTxt();
         for (Purchase a : purchases) {
@@ -23,6 +18,7 @@ public class Runner {
         for (Purchase purchase : purchases) {
             purchase.showOrder();
         }
+        final int SEARCH_NUMBER_VALUE = 5;
         Purchase key = new Purchase(SEARCH_NUMBER_VALUE, 0, 0);
         System.out.println(purchases[Arrays.binarySearch(purchases, key)]);
     }
@@ -34,16 +30,15 @@ public class Runner {
             scan.useLocale(Locale.ENGLISH);
             if (scan.hasNext() && scan.hasNextInt()) {
                 purchases = new Purchase[scan.nextInt()];
-                scan.useDelimiter("\r\n");
                 if (purchases.length != 0) {
                     for (int i = 0; i < purchases.length; i++) {
-                        String[] line = scan.next().split(" ");
-                        purchases[i] = new Purchase(Integer.parseInt(line[FIRST_SCAN_VALUE]),
-                                Double.parseDouble(line[SECOND_SCAN_VALUE]),
-                                WeekDay.values()[Integer.parseInt(line[THIRD_SCAN_VALUE])]);
+                        purchases[i] = new Purchase();
+                        purchases[i].setNumber(scan.nextInt());
+                        purchases[i].setPercent(scan.nextInt());
+                        purchases[i].setWeekDay(WeekDay.values()[scan.nextInt()]);
                     }
                 } else {
-                    System.out.println("PURCHASES NUMBER is 0");
+                    System.out.println("Purchases number is 0");
                 }
             }
         } catch (FileNotFoundException e) {
