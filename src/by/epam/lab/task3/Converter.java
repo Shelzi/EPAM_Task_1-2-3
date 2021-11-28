@@ -1,7 +1,6 @@
 package by.epam.lab.task3;
 
 public final class Converter {
-
     private Converter() {
     }
 

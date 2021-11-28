@@ -1,7 +1,5 @@
 package by.epam.lab.task3;
 
-import java.util.Locale;
-
 public enum WeekDay {
     MONDAY,
     TUESDAY,

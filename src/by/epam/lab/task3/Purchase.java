@@ -22,14 +22,6 @@ public class Purchase implements Comparable<Purchase> {
         this.weekDay = weekDay;
     }
 
-    public String getName() {
-        return NAME;
-    }
-
-    public int getPrice() {
-        return PRICE;
-    }
-
     public int getNumber() {
         return number;
     }
@@ -59,7 +51,7 @@ public class Purchase implements Comparable<Purchase> {
     }
 
     public void showOrder() {
-        System.out.printf("Amount = %d, Discount = %.2f%%, Order day = %s%n", number, percent, weekDay.toString());
+        System.out.printf("Amount = %d, Discount = %.2f%%, Order day = %s%n", number, percent, weekDay);
     }
 
     public int findCost() {
@@ -68,7 +60,7 @@ public class Purchase implements Comparable<Purchase> {
 
     @Override
     public String toString() {
-        return String.format("%d;%.2f;%s;%d", number, percent, weekDay.toString(), findCost());
+        return String.format("%d;%.2f;%s;%d", number, percent, weekDay, findCost());
     }
 
     @Override

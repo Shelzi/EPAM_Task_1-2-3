@@ -19,8 +19,9 @@ public class Runner {
         }
         calculatePurchasesStatistic(purchases);
         Arrays.sort(purchases);
-        for (Purchase a : purchases) {
-            System.out.println(a);
+        System.out.printf("Name = %s%nPrice = %d%n", Purchase.NAME, Purchase.PRICE);
+        for (Purchase purchase : purchases) {
+            purchase.showOrder();
         }
         Purchase key = new Purchase(SEARCH_NUMBER_VALUE, 0, 0);
         System.out.println(purchases[Arrays.binarySearch(purchases, key)]);
