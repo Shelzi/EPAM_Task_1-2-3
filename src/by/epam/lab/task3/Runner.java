@@ -37,10 +37,9 @@ public class Runner {
                 purchases = new Purchase[scan.nextInt()];
                 if (purchases.length != 0) {
                     for (int i = 0; i < purchases.length; i++) {
-                        purchases[i] = new Purchase();
-                        purchases[i].setNumber(scan.nextInt());
-                        purchases[i].setPercent(scan.nextInt());
-                        purchases[i].setWeekDay(WeekDay.values()[scan.nextInt()]);
+                        purchases[i] = new Purchase(scan.nextInt(),
+                                scan.nextInt(),
+                                WeekDay.values()[scan.nextInt()]);
                     }
                 } else {
                     System.out.println("Purchases number is 0");
