@@ -20,7 +20,12 @@ public class Runner {
         }
         final int SEARCH_NUMBER_VALUE = 5;
         Purchase key = new Purchase(SEARCH_NUMBER_VALUE, 0, 0);
-        System.out.println(purchases[Arrays.binarySearch(purchases, key)]);
+        int index = Arrays.binarySearch(purchases, key);
+        if (index > -1) {
+            System.out.println(purchases[index]);
+        } else {
+            System.out.println("Index not found");
+        }
     }
 
     private static Purchase[] parsePurchaseFromTxt() {
